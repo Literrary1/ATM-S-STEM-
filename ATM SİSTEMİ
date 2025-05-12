@@ -1,0 +1,56 @@
+package atmsistemi;
+
+	import java.util.Scanner;
+
+	public class ATM {
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        double bakiye = 1000.0;
+	        int secim;
+
+	        do {
+	            System.out.println("\n*** ATM'ye Hoşgeldiniz ***");
+	            System.out.println("1 - Bakiye Görüntüle");
+	            System.out.println("2 - Para Yatır");
+	            System.out.println("3 - Para Çek");
+	            System.out.println("4 - Çıkış");
+	            System.out.print("Lütfen bir seçenek giriniz: ");
+	            secim = scanner.nextInt();
+
+	            switch (secim) {
+	                case 1:
+	                    System.out.println("Mevcut Bakiye: " + bakiye + " TL");
+	                    break;
+	                case 2:
+	                    System.out.print("Yatırmak istediğiniz miktar: ");
+	                    double yatirilan = scanner.nextDouble();
+	                    if (yatirilan > 0) {
+	                        bakiye += yatirilan;
+	                        System.out.println("Yeni Bakiye: " + bakiye + " TL");
+	                    } else {
+	                        System.out.println("Geçersiz miktar.");
+	                    }
+	                    break;
+	                case 3:
+	                    System.out.print("Çekmek istediğiniz miktar: ");
+	                    double cekilen = scanner.nextDouble();
+	                    if (cekilen > 0 && cekilen <= bakiye) {
+	                        bakiye -= cekilen;
+	                        System.out.println("Yeni Bakiye: " + bakiye + " TL");
+	                    } else {
+	                        System.out.println("yetersiz bakiye.");
+	                    }
+	                    break;
+	                case 4:
+	                    System.out.println("Çıkış yapılıyor. İyi günler!");
+	                    break;
+	                default:
+	                    System.out.println("Geçersiz seçim. Lütfen tekrar deneyin.");
+	            }
+
+	        } while (secim != 4);
+
+	        scanner.close();
+	    }
+	}
+
